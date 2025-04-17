@@ -1,3 +1,5 @@
+import ToastService from "./toast/ToastService";
+
 // src/services/crudService.ts
 const BASE_URL = import.meta.env.VITE_LOCAL_URL;
 
@@ -48,7 +50,8 @@ async function request<T, D = Record<string, unknown>>(
   endpoint: string,
   method: Method = "GET",
   data?: D,
-  token?: string
+  token?: string,
+  showToast: boolean = true
 ): Promise<T> {
   const headers: HeadersInit = {
     "Content-Type": "application/json",
@@ -64,14 +67,28 @@ async function request<T, D = Record<string, unknown>>(
     body: data ? JSON.stringify(data) : undefined,
   };
 
-  const response = await fetch(`${BASE_URL}${endpoint}`, config);
+  try {
+    const response = await fetch(`${BASE_URL}${endpoint}`, config);
 
-  if (!response.ok) {
-    const error = await response.json().catch(() => ({}));
-    throw new Error(error.message || `Error ${response.status}`);
+    if (!response.ok) {
+      const error = await response.json().catch(() => ({}));
+      if (showToast) {
+        ToastService.error(error.message || `Error ${response.status}`);
+      }
+      throw new Error(error.message || `Error ${response.status}`);
+    }
+
+    if (showToast && method !== "GET") {
+      ToastService.success("Operación realizada con éxito");
+    }
+
+    return response.json();
+  } catch (err: unknown) {
+    if (showToast && err instanceof Error && !err.message.includes("Error")) {
+      ToastService.error("Ocurrió un error inesperado");
+    }
+    throw err;
   }
-
-  return response.json();
 }
 
 // Update the generic CRUD methods
