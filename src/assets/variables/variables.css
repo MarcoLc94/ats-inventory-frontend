@@ -1,0 +1,41 @@
+:root {
+  --primary-color: #fe0126;
+  --primary-color-hover: #c40320;
+  --primary-contrast-color: #ffffff;
+  --secondary-color: #002044;
+  --text-color: #2b2b2b;
+  --text-color-secondary: #666666;
+  --surface-border: #e0e0e0;
+  --surface-card: #ffffff;
+  --surface-hover: #f5f5f5e0;
+  --surface-overlay: rgba(255, 255, 255, 0.9);
+  --maskbg: rgba(0, 0, 0, 0.5);
+  --content-border-radius: 8px;
+  --layout-section-transition-duration: 0.2s;
+  --element-transition-duration: 0.3s;
+  --focus-ring-width: 2px;
+  --focus-ring-style: solid;
+  --focus-ring-color: #002044;
+  --focus-ring-offset: 2px;
+  --focus-ring-shadow: 0 0 0 2px rgba(0, 32, 68, 0.2);
+}
+body {
+  background-color: var(--color-background-light);
+  color: var(--color-text-dark);
+}
+.header {
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+}
+.button-primary {
+  background-color: var(--color-accent-1);
+  color: var(--color-text-light);
+}
+.button-secondary {
+  background-color: var(--color-accent-2);
+  color: var(--color-text-light);
+}
+.alert {
+  background-color: var(--color-accent-3);
+  color: var(--color-text-dark);
+}
