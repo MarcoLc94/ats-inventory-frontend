@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import "./DataGrid.css";
+import "./Datagrid.css";
 
 // Columnas tipadas
 type Column<T> = {
