@@ -14,6 +14,8 @@ import CategoryComponent from "./pages/Category/Category";
 import Product from "./pages/Product/Product";
 import User from "./pages/User/User";
 import Movement from "./pages/Movement/Movement";
+import { ToastContainer } from "react-toastify"; // Importa el contenedor
+import "react-toastify/dist/ReactToastify.css"; // Asegúrate de importar el CSS aquí
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
@@ -34,6 +36,18 @@ function App() {
 
   return (
     <Router>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
       <Routes>
         <Route
           path="/login"

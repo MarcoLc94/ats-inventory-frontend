@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import crudService from "../../services/CrudService";
 import "./Login.css";
+import ToastService from "../../services/toast/ToastService";
 
 type LoginProps = {
   setIsAuthenticated: (value: boolean) => void;
@@ -13,7 +14,6 @@ const Login = ({ setIsAuthenticated }: LoginProps) => {
     email: "",
     password: "",
   });
-  const [error, setError] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -24,15 +24,28 @@ const Login = ({ setIsAuthenticated }: LoginProps) => {
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError("");
-    
+
     try {
       const response = await crudService.login(formData);
       localStorage.setItem("authToken", response.token);
       setIsAuthenticated(true);
       navigate("/");
+      ToastService.success("¡Inicio de sesión exitoso!"); // Opcional: mensaje de éxito
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Login failed");
+      // Extrae el mensaje de error de la respuesta
+      if (err instanceof Error) {
+        try {
+          // Si el error es un objeto JSON (como {"error":"Invalid email or password"})
+          const errorData = JSON.parse(err.message);
+          ToastService.error(errorData.error); // Muestra el mensaje del servidor
+        } catch (parseError) {
+          console.log(parseError);
+          // Si no es JSON, muestra el mensaje genérico
+          ToastService.error("Credenciales incorrectas");
+        }
+      } else {
+        ToastService.error("Error desconocido");
+      }
     }
   };
 
@@ -44,8 +57,6 @@ const Login = ({ setIsAuthenticated }: LoginProps) => {
             <img src="/images/ats-logo.jpg" alt="" width={"200px"} />
           </div>
           <h2 className="login-title">Iniciar Sesión</h2>
-
-          {error && <div className="error-message">{error}</div>}
 
           <div className="form-group">
             <label htmlFor="email">Correo Electrónico</label>

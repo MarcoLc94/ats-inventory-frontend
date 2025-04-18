@@ -12,7 +12,7 @@
   padding: 2rem;
   border-radius: 15px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  width: 100%;
+  width: 70%;
   max-width: 400px;
   transition: transform 0.3s ease;
 }
@@ -87,5 +87,8 @@
 }
 
 .error-message {
+  font-weight: 600;
+  margin-top: 10px;
+  text-align: center;
   color: red;
 }

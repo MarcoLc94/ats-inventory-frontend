@@ -51,7 +51,7 @@ async function request<T, D = Record<string, unknown>>(
   method: Method = "GET",
   data?: D,
   token?: string,
-  showToast: boolean = true
+  showToast: boolean = false
 ): Promise<T> {
   const headers: HeadersInit = {
     "Content-Type": "application/json",
