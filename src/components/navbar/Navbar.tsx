@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import ProfileCard from "../profileCard/ProfileCard";
+import Drawer from "../drawer/Drawer";
 
 interface NavbarProps {
   onLogout: () => void;
@@ -10,6 +11,7 @@ const Navbar: React.FC<NavbarProps> = ({ onLogout, userName }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [darkMode, setDarkMode] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const userData = {
     name: "Marco",
@@ -40,9 +42,16 @@ const Navbar: React.FC<NavbarProps> = ({ onLogout, userName }) => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
+  const handleMenu = () => {
+    setDrawerOpen(!drawerOpen);
+  };
+
   return (
     <header className="navbar">
-      <div></div>
+      <span className="material-symbols-outlined" onClick={handleMenu}>
+        menu
+      </span>
+      <Drawer isOpen={drawerOpen} setIsOpen={setDrawerOpen} />
       <div className="user-profile" ref={dropdownRef}>
         <button className="user-button" onClick={toggleDropdown}>
           <img

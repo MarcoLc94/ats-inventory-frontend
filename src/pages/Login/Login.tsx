@@ -11,6 +11,8 @@ type LoginProps = {
 
 const Login = ({ setIsAuthenticated }: LoginProps) => {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -32,6 +34,7 @@ const Login = ({ setIsAuthenticated }: LoginProps) => {
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
 
     try {
       const response = await crudService.login(formData);
@@ -54,6 +57,8 @@ const Login = ({ setIsAuthenticated }: LoginProps) => {
       } else {
         ToastService.error("Error desconocido");
       }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -105,9 +110,9 @@ const Login = ({ setIsAuthenticated }: LoginProps) => {
           <button
             type="submit"
             className="login-button"
-            disabled={!isFormValid()}
+            disabled={!isFormValid() || isLoading}
           >
-            Iniciar sesión
+            {isLoading ? <span className="loader"></span> : "Iniciar sesión"}
           </button>
         </form>
       </div>

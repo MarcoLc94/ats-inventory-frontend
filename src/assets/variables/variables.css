@@ -1,11 +1,11 @@
 [data-theme="light"] {
-  --color-background: hsl(239, 100%, 22%);
+  --color-background: hsl(0, 0%, 83%);
   --color-text: hsl(0, 0%, 20%);
   --color-surface: hsl(0, 0%, 95%);
   --color-border: hsl(0, 0%, 85%);
 
   --color-primary: hsl(226, 100%, 22%);
-  --color-primary-hover: hsl(210, 90%, 46%);
+  --color-primary-hover: hsl(351, 100%, 32%);
   --color-secondary: hsl(351, 99%, 50%);
   --color-accent: hsl(0, 100%, 75%);
   --color-link: hsl(210, 70%, 50%);
