@@ -6,7 +6,7 @@
 
   --color-primary: hsl(226, 100%, 22%);
   --color-primary-hover: hsl(210, 90%, 46%);
-  --color-secondary: hsl(160, 60%, 45%);
+  --color-secondary: hsl(351, 99%, 50%);
   --color-accent: hsl(0, 100%, 75%);
   --color-link: hsl(210, 70%, 50%);
   --color-link-hover: hsl(210, 70%, 40%);
@@ -37,7 +37,7 @@
 
   --color-primary: hsl(210, 90%, 60%);
   --color-primary-hover: hsl(210, 90%, 50%);
-  --color-secondary: hsl(160, 60%, 50%);
+  --color-secondary: hsl(351, 99%, 50%);
   --color-accent: hsl(0, 100%, 70%);
   --color-link: hsl(210, 70%, 65%);
   --color-link-hover: hsl(210, 70%, 55%);

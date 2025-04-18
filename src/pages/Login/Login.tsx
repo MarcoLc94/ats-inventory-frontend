@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import crudService from "../../services/CrudService";
 import "./Login.css";
 import ToastService from "../../services/toast/ToastService";
+import { MaterialSymbol } from "material-symbols";
+import "material-symbols/outlined.css";
 
 type LoginProps = {
   setIsAuthenticated: (value: boolean) => void;
@@ -61,32 +63,43 @@ const Login = ({ setIsAuthenticated }: LoginProps) => {
       <div className="login-card">
         <form onSubmit={handleLogin}>
           <div className="img-container">
-            <img src="/images/ats-logo.jpg" alt="" width={"200px"} />
+            <img src="/images/ats-logo-red.png" alt="" width={"200px"} />
           </div>
           <h2 className="login-title">Iniciar Sesión</h2>
 
           <div className="form-group">
             <label htmlFor="email">Correo Electrónico</label>
-            <input
-              type="email"
-              id="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="tu@email.com"
-              required
-            />
+            <div className="input-container">
+              <input
+                type="email"
+                id="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="      tu@email.com"
+                required
+                className="input-with-icon" // Clase para el input con icono
+              />
+              <span className="material-symbols-outlined icon-inside-input">
+                mail
+              </span>
+            </div>
           </div>
 
           <div className="form-group">
             <label htmlFor="password">Contraseña</label>
-            <input
-              type="password"
-              id="password"
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="••••••••"
-              required
-            />
+            <div className="input-container">
+              <input
+                type="password"
+                id="password"
+                value={formData.password}
+                onChange={handleChange}
+                placeholder="      ••••••••"
+                required
+              />
+              <span className="material-symbols-outlined icon-inside-input">
+                lock
+              </span>
+            </div>
           </div>
 
           <button

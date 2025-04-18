@@ -15,6 +15,9 @@
   width: 70%;
   max-width: 400px;
   transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .login-card:hover {
@@ -29,13 +32,15 @@
 }
 
 .form-group {
+  display: flex;
+  flex-direction: column;
   margin-bottom: 1.5rem;
 }
 
 .form-group label {
-  display: block;
+  display: flex;
   margin-bottom: 0.5rem;
-  color: #555;
+  color: var(--color-text);
   font-weight: 500;
 }
 
@@ -97,4 +102,24 @@
   margin-top: 10px;
   text-align: center;
   color: red;
+}
+
+.input-container {
+  position: relative; /* Necesario para posicionar el icono */
+  width: 100%; /* Ajusta según tu layout */
+  display: flex;
+}
+
+.input-with-icon {
+  width: 100%;
+  padding-left: 40px; /* Espacio para el icono */
+}
+
+.icon-inside-input {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-secondary); /* Color del icono */
+  pointer-events: none; /* Evita que el icono interfiera con el input */
 }
