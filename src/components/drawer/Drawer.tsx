@@ -12,7 +12,7 @@ const Drawer: React.FC<DrawerProps> = ({ isOpen, setIsOpen }) => {
 
   useEffect(() => {
     const checkWidth = () => {
-      setShouldRenderDrawer(window.innerWidth > 500);
+      setShouldRenderDrawer(window.innerWidth < 700);
     };
 
     checkWidth(); // Verifica al montar
