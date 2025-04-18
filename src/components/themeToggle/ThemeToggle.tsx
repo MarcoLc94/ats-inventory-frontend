@@ -15,14 +15,13 @@ export const ThemeToggle = () => {
         width: "50px",
         height: "50px",
         borderRadius: "50%",
-        backgroundColor: theme === "dark" ? "#4a4a4a" : "#f0f0f0",
+        backgroundColor: "var(--color-text)",
         color: theme === "dark" ? "#ffd700" : "#333",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         cursor: "pointer",
         boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
-        border: `2px solid ${theme === "dark" ? "#ffd700" : "#333"}`,
         transition: "all 0.3s ease",
       }}
       title={

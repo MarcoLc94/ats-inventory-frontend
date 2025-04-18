@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import crudService from "../../services/CrudService";
 import "./Login.css";
 import ToastService from "../../services/toast/ToastService";
-import { MaterialSymbol } from "material-symbols";
 import "material-symbols/outlined.css";
 
 type LoginProps = {
@@ -75,7 +74,7 @@ const Login = ({ setIsAuthenticated }: LoginProps) => {
                 id="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="      tu@email.com"
+                placeholder="tu@email.com"
                 required
                 className="input-with-icon" // Clase para el input con icono
               />
@@ -93,8 +92,9 @@ const Login = ({ setIsAuthenticated }: LoginProps) => {
                 id="password"
                 value={formData.password}
                 onChange={handleChange}
-                placeholder="      ••••••••"
+                placeholder="••••••••"
                 required
+                className="input-with-icon" // Clase para el input con icono
               />
               <span className="material-symbols-outlined icon-inside-input">
                 lock

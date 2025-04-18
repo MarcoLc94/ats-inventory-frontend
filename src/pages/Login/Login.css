@@ -108,11 +108,11 @@
   position: relative; /* Necesario para posicionar el icono */
   width: 100%; /* Ajusta según tu layout */
   display: flex;
-}
 
-.input-with-icon {
-  width: 100%;
-  padding-left: 40px; /* Espacio para el icono */
+  .input-with-icon {
+    width: 100%;
+    padding-left: 40px; /* Espacio para el icono */
+  }
 }
 
 .icon-inside-input {
