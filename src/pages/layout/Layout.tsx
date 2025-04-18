@@ -14,7 +14,7 @@ const Layout: React.FC<LayoutProps> = ({ onLogout }) => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 500) {
+      if (window.innerWidth < 700) {
         setSidebarHide(false);
       } else {
         setSidebarHide(true);

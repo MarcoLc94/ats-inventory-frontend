@@ -27,6 +27,7 @@ const CategoryComponent = () => {
     const fetchCategorias = async () => {
       try {
         const token = localStorage.getItem("authToken");
+        console.log(token);
         if (!token) throw new Error("Token no encontrado");
 
         const data = await crudService.getCategorias(token);

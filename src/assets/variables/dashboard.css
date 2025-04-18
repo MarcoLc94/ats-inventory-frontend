@@ -3,6 +3,7 @@
   flex-direction: column;
   width: 100%;
   background-color: var(--color-surface);
+  height: 87vh;
 }
 
 h1 {

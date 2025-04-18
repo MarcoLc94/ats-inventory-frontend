@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./Drawer.css"; // Para estilos
+import "./Drawer.css";
 
 interface DrawerProps {
   isOpen: boolean;
@@ -8,6 +8,23 @@ interface DrawerProps {
 }
 
 const Drawer: React.FC<DrawerProps> = ({ isOpen, setIsOpen }) => {
+  const [shouldRenderDrawer, setShouldRenderDrawer] = useState(true);
+
+  useEffect(() => {
+    const checkWidth = () => {
+      setShouldRenderDrawer(window.innerWidth > 500);
+    };
+
+    checkWidth(); // Verifica al montar
+
+    window.addEventListener("resize", checkWidth);
+    return () => window.removeEventListener("resize", checkWidth);
+  }, []);
+
+  if (!shouldRenderDrawer) {
+    return null;
+  }
+
   const closeDrawer = () => {
     setIsOpen(false);
   };

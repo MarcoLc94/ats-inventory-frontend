@@ -11,6 +11,7 @@ const Navbar: React.FC<NavbarProps> = ({ onLogout, userName }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [menuVisible, setMenuVisible] = useState(false);
 
   const userData = {
     name: "Marco",
@@ -18,6 +19,21 @@ const Navbar: React.FC<NavbarProps> = ({ onLogout, userName }) => {
     avatar: "",
     role: "admin",
   };
+
+  useEffect(() => {
+    const checkWidth = () => {
+      if (window.innerWidth <= 700) {
+        setMenuVisible(true);
+      } else {
+        setMenuVisible(false);
+      }
+    };
+
+    checkWidth(); // Verifica al montar
+
+    window.addEventListener("resize", checkWidth);
+    return () => window.removeEventListener("resize", checkWidth);
+  }, []);
 
   // Cerrar el dropdown al hacer clic fuera
   useEffect(() => {
@@ -47,12 +63,16 @@ const Navbar: React.FC<NavbarProps> = ({ onLogout, userName }) => {
 
   return (
     <header className="navbar">
-      <span
-        className="material-symbols-outlined span-inside"
-        onClick={handleMenu}
-      >
-        menu
-      </span>
+      {!menuVisible && <div></div>}
+      {menuVisible && (
+        <span
+          className="material-symbols-outlined span-inside"
+          onClick={handleMenu}
+        >
+          menu
+        </span>
+      )}
+
       <Drawer isOpen={drawerOpen} setIsOpen={setDrawerOpen} />
       <div className="user-profile" ref={dropdownRef}>
         <button className="user-button" onClick={toggleDropdown}>
