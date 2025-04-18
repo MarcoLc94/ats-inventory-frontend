@@ -6,6 +6,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  .span-inside {
+    color: var(--color-button-text);
+    border-radius: 20px;
+    padding: 5px;
+  }
+
+  .span-inside:hover {
+    background-color: var(--color-button-text);
+    color: var(--color-primary);
+    border-radius: 20px;
+    padding: 5px;
+    cursor: pointer;
+  }
 }
 
 .navbar h1 {
@@ -115,5 +129,5 @@
 .dropdown-icon {
   font-size: 10px;
   margin-left: 4px;
-  color: #666;
+  color: var(--color-button-text);
 }

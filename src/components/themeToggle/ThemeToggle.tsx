@@ -16,7 +16,7 @@ export const ThemeToggle = () => {
         height: "50px",
         borderRadius: "50%",
         backgroundColor: "var(--color-text)",
-        color: theme === "dark" ? "#ffd700" : "#333",
+        color: "var(--color-primary)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",

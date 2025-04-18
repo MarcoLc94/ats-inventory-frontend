@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import "./ProfileCard.css";
 import { useEffect, useRef } from "react";
+import { useTheme } from "../../context/ThemeContext"; // ajusta la ruta si es necesario
 
 interface UserData {
   name: string;
@@ -12,8 +13,7 @@ interface UserData {
 interface UserProfileCardProps {
   userData: UserData;
   onLogout: () => void;
-  darkMode: boolean;
-  toggleDarkMode: () => void;
+
   isDropdownOpen: boolean;
   setIsDropdownOpen: Dispatch<SetStateAction<boolean>>;
 }
@@ -21,12 +21,14 @@ interface UserProfileCardProps {
 const ProfileCard = ({
   userData,
   onLogout,
-  darkMode,
-  toggleDarkMode,
+
   setIsDropdownOpen,
   isDropdownOpen,
 }: UserProfileCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
+
+  const { theme, toggleTheme } = useTheme();
+  const darkMode = theme === "dark";
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -49,7 +51,11 @@ const ProfileCard = ({
       <div className="profile-card" ref={cardRef}>
         <div className="profile-header">
           <img
-            src={userData.avatar || "images/default-avatar.png"}
+            src={
+              userData.avatar || darkMode
+                ? "images/default-avatar-white.png"
+                : "images/default-avatar.png"
+            }
             alt="Profile"
             className="profile-header-avatar"
           />
@@ -65,17 +71,18 @@ const ProfileCard = ({
         <div className="profile-darkmode-toggle">
           <span>Modo oscuro</span>
           <label className="darkmode-switch">
-            <input
-              type="checkbox"
-              checked={darkMode}
-              onChange={toggleDarkMode}
-            />
+            <input type="checkbox" checked={darkMode} onChange={toggleTheme} />
             <span className="darkmode-slider"></span>
           </label>
         </div>
 
         <button className="profile-logout-btn" onClick={onLogout}>
-          <span className="logout-icon">⎋</span>
+          <span
+            className="logout-icon material-symbols-outlined"
+            style={{ color: "var(--color-text)" }}
+          >
+            block
+          </span>
           Cerrar sesión
         </button>
       </div>

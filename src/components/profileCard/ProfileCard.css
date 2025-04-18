@@ -68,8 +68,8 @@
   margin-top: 6px;
   padding: 2px 8px;
   font-size: 12px;
-  background-color: var(--color-surface);
-  color: var(--color-primary);
+  background-color: var(--color-primary);
+  color: var(--color-button-text);
   border-radius: 4px;
 }
 
@@ -81,6 +81,10 @@
   padding: 12px 16px;
   border-bottom: 1px solid var(--color-border);
   color: var(--color-text);
+
+  span {
+    color: var(--color-text);
+  }
 }
 
 .darkmode-switch {
@@ -115,7 +119,7 @@
   width: 16px;
   left: 4px;
   bottom: 4px;
-  background-color: var(--color-button-text);
+  background-color: var(--color-primary);
   transition: var(--transition-speed);
   border-radius: 50%;
 }
@@ -125,6 +129,7 @@
 }
 
 .darkmode-switch input:checked + .darkmode-slider:before {
+  background-color: var(--color-primary);
   transform: translateX(20px);
 }
 

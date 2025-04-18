@@ -10,7 +10,6 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ onLogout, userName }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const [darkMode, setDarkMode] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const userData = {
@@ -48,7 +47,10 @@ const Navbar: React.FC<NavbarProps> = ({ onLogout, userName }) => {
 
   return (
     <header className="navbar">
-      <span className="material-symbols-outlined" onClick={handleMenu}>
+      <span
+        className="material-symbols-outlined span-inside"
+        onClick={handleMenu}
+      >
         menu
       </span>
       <Drawer isOpen={drawerOpen} setIsOpen={setDrawerOpen} />
@@ -68,8 +70,6 @@ const Navbar: React.FC<NavbarProps> = ({ onLogout, userName }) => {
           <ProfileCard
             userData={userData}
             onLogout={onLogout}
-            darkMode={darkMode}
-            toggleDarkMode={() => setDarkMode(!darkMode)}
             isDropdownOpen={isDropdownOpen}
             setIsDropdownOpen={setIsDropdownOpen}
           />
