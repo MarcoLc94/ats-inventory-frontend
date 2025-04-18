@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import ProfileCard from "../profileCard/ProfileCard";
 
 interface NavbarProps {
   onLogout: () => void;
@@ -8,6 +9,14 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ onLogout, userName }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const [darkMode, setDarkMode] = useState(false);
+
+  const userData = {
+    name: "Marco",
+    email: "marco@mail.com",
+    avatar: "",
+    role: "admin",
+  };
 
   // Cerrar el dropdown al hacer clic fuera
   useEffect(() => {
@@ -35,11 +44,12 @@ const Navbar: React.FC<NavbarProps> = ({ onLogout, userName }) => {
       <div></div>
       <div className="user-profile" ref={dropdownRef}>
         {isDropdownOpen && (
-          <div className="dropdown-menu">
-            <button className="dropdown-item" onClick={onLogout}>
-              Cerrar sesión
-            </button>
-          </div>
+          <ProfileCard
+            userData={userData}
+            onLogout={onLogout}
+            darkMode={darkMode}
+            toggleDarkMode={() => setDarkMode(!darkMode)}
+          ></ProfileCard>
         )}
         <button className="user-button" onClick={toggleDropdown}>
           <div className="user-avatar">

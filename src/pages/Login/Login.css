@@ -4,11 +4,11 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: var(--secondary-color);
+  background: var(--primary-color);
 }
 
 .login-card {
-  background: white;
+  background: var(--color-surface);
   padding: 2rem;
   border-radius: 15px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -23,7 +23,7 @@
 
 .login-title {
   text-align: center;
-  color: #333;
+  color: var(--color-text);
   margin-bottom: 1.5rem;
   font-size: 1.8rem;
 }

@@ -1,41 +1,73 @@
-:root {
-  --primary-color: #fe0126;
-  --primary-color-hover: #c40320;
-  --primary-contrast-color: #ffffff;
-  --secondary-color: #002044;
-  --text-color: #2b2b2b;
-  --text-color-secondary: #666666;
-  --surface-border: #e0e0e0;
-  --surface-card: #ffffff;
-  --surface-hover: #f5f5f5e0;
-  --surface-overlay: rgba(255, 255, 255, 0.9);
-  --maskbg: rgba(0, 0, 0, 0.5);
-  --content-border-radius: 8px;
-  --layout-section-transition-duration: 0.2s;
-  --element-transition-duration: 0.3s;
-  --focus-ring-width: 2px;
-  --focus-ring-style: solid;
-  --focus-ring-color: #002044;
-  --focus-ring-offset: 2px;
-  --focus-ring-shadow: 0 0 0 2px rgba(0, 32, 68, 0.2);
+[data-theme="light"] {
+  --color-background: hsl(239, 100%, 22%);
+  --color-text: hsl(0, 0%, 20%);
+  --color-surface: hsl(0, 0%, 95%);
+  --color-border: hsl(0, 0%, 85%);
+
+  --color-primary: hsl(226, 100%, 22%);
+  --color-primary-hover: hsl(210, 90%, 46%);
+  --color-secondary: hsl(160, 60%, 45%);
+  --color-accent: hsl(0, 100%, 75%);
+  --color-link: hsl(210, 70%, 50%);
+  --color-link-hover: hsl(210, 70%, 40%);
+
+  --color-button-text: hsl(0, 0%, 100%);
+  --color-button-background: var(--color-primary);
+  --color-button-hover: var(--color-primary-hover);
+  --color-button-disabled: hsl(0, 0%, 80%);
+
+  --color-input-background: hsl(0, 0%, 100%);
+  --color-input-border: hsl(0, 0%, 75%);
+  --color-input-placeholder: hsl(0, 0%, 60%);
+  --color-input-focus: var(--color-primary);
+
+  --color-shadow: hsla(0, 0%, 0%, 0.1);
+  --color-card-background: hsl(0, 0%, 98%);
+  --color-modal-background: hsla(0, 0%, 0%, 0.25);
+
+  --transition-speed: 0.3s;
+  --border-radius: 0.5rem;
 }
+
+[data-theme="dark"] {
+  --color-background: hsl(0, 0%, 8%);
+  --color-text: hsl(0, 0%, 90%);
+  --color-surface: hsl(0, 0%, 12%);
+  --color-border: hsl(0, 0%, 25%);
+
+  --color-primary: hsl(210, 90%, 60%);
+  --color-primary-hover: hsl(210, 90%, 50%);
+  --color-secondary: hsl(160, 60%, 50%);
+  --color-accent: hsl(0, 100%, 70%);
+  --color-link: hsl(210, 70%, 65%);
+  --color-link-hover: hsl(210, 70%, 55%);
+
+  --color-button-text: hsl(0, 0%, 100%);
+  --color-button-background: var(--color-primary);
+  --color-button-hover: var(--color-primary-hover);
+  --color-button-disabled: hsl(0, 0%, 30%);
+
+  --color-input-background: hsl(0, 0%, 10%);
+  --color-input-border: hsl(0, 0%, 30%);
+  --color-input-placeholder: hsl(0, 0%, 60%);
+  --color-input-focus: var(--color-primary);
+
+  --color-shadow: hsla(0, 0%, 0%, 0.4);
+  --color-card-background: hsl(0, 0%, 10%);
+  --color-modal-background: hsla(0, 0%, 100%, 0.05);
+
+  --transition-speed: 0.3s;
+  --border-radius: 0.5rem;
+}
+
 body {
-  background-color: var(--color-background-light);
-  color: var(--color-text-dark);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  transition: background-color 0.3s, color 0.3s;
 }
+
+/* Ejemplo para componentes específicos */
 .header {
-  background-color: var(--color-primary);
-  color: var(--color-text-light);
-}
-.button-primary {
-  background-color: var(--color-accent-1);
-  color: var(--color-text-light);
-}
-.button-secondary {
-  background-color: var(--color-accent-2);
-  color: var(--color-text-light);
-}
-.alert {
-  background-color: var(--color-accent-3);
-  color: var(--color-text-dark);
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
 }

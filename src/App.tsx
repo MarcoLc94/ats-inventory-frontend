@@ -16,6 +16,8 @@ import User from "./pages/User/User";
 import Movement from "./pages/Movement/Movement";
 import { ToastContainer } from "react-toastify"; // Importa el contenedor
 import "react-toastify/dist/ReactToastify.css"; // Asegúrate de importar el CSS aquí
+import { ThemeProvider } from "./context/ThemeContext";
+import { ThemeToggle } from "./components/themeToggle/ThemeToggle";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
@@ -35,44 +37,48 @@ function App() {
   if (loading) return <div>Cargando...</div>;
 
   return (
-    <Router>
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
-      <Routes>
-        <Route
-          path="/login"
-          element={<Login setIsAuthenticated={setIsAuthenticated} />}
+    <ThemeProvider>
+      <ThemeToggle></ThemeToggle>
+      <Router>
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
         />
-        {isAuthenticated ? (
-          <Route element={<Layout onLogout={handleLogout} />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/categories" element={<CategoryComponent />} />
-            <Route path="/products" element={<Product />} />{" "}
-            {/* Cambié el componente */}
-            <Route path="/users" element={<User />} /> {/* Ruta de usuarios */}
-            <Route path="/movements" element={<Movement />} />{" "}
-            {/* Ruta de movimientos */}
-          </Route>
-        ) : (
-          <Route path="/" element={<Navigate to="/login" replace />} />
-        )}
-        <Route path="/notFound" element={<NotFound />} />
-        <Route
-          path="*"
-          element={<Navigate to={isAuthenticated ? "/" : "/login"} replace />}
-        />
-      </Routes>
-    </Router>
+        <Routes>
+          <Route
+            path="/login"
+            element={<Login setIsAuthenticated={setIsAuthenticated} />}
+          />
+          {isAuthenticated ? (
+            <Route element={<Layout onLogout={handleLogout} />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/categories" element={<CategoryComponent />} />
+              <Route path="/products" element={<Product />} />{" "}
+              {/* Cambié el componente */}
+              <Route path="/users" element={<User />} />{" "}
+              {/* Ruta de usuarios */}
+              <Route path="/movements" element={<Movement />} />{" "}
+              {/* Ruta de movimientos */}
+            </Route>
+          ) : (
+            <Route path="/" element={<Navigate to="/login" replace />} />
+          )}
+          <Route path="/notFound" element={<NotFound />} />
+          <Route
+            path="*"
+            element={<Navigate to={isAuthenticated ? "/" : "/login"} replace />}
+          />
+        </Routes>
+      </Router>
+    </ThemeProvider>
   );
 }
 

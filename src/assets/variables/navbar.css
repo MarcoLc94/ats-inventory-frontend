@@ -1,0 +1,84 @@
+/* Navbar */
+.navbar {
+  background: var(--secondary-color);
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar h1 {
+  margin: 0;
+}
+
+.user-profile {
+  position: relative;
+}
+
+.user-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  color: var(--primary-contrast-color);
+}
+
+.user-button:hover {
+  background-color: white;
+  color: var(--secondary-color);
+}
+
+.avatar-dummy {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #6c757d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+}
+
+.user-name {
+  font-weight: 500;
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: var(--secondary-color);
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  min-width: 150px;
+  z-index: 100;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.dropdown-item {
+  width: 100%;
+  text-align: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--primary-contrast-color);
+}
+
+.dropdown-menu:hover {
+  background-color: white;
+  color: black;
+}
+
+.dropdown-item:hover {
+  background-color: white;
+  color: black;
+}
