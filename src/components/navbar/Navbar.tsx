@@ -36,6 +36,7 @@ const Navbar: React.FC<NavbarProps> = ({ onLogout, userName }) => {
   }, []);
 
   const toggleDropdown = () => {
+    console.log("is working menu");
     setIsDropdownOpen(!isDropdownOpen);
   };
 
@@ -43,20 +44,27 @@ const Navbar: React.FC<NavbarProps> = ({ onLogout, userName }) => {
     <header className="navbar">
       <div></div>
       <div className="user-profile" ref={dropdownRef}>
+        <button className="user-button" onClick={toggleDropdown}>
+          <img
+            src={userData.avatar || "images/default-avatar-white.png"}
+            alt="Avatar"
+            className="user-avatar-img"
+            color="white"
+          />
+          <span className="user-name">{userName}</span>
+          <span className="dropdown-icon">▼</span>
+        </button>
+
         {isDropdownOpen && (
           <ProfileCard
             userData={userData}
             onLogout={onLogout}
             darkMode={darkMode}
             toggleDarkMode={() => setDarkMode(!darkMode)}
-          ></ProfileCard>
+            isDropdownOpen={isDropdownOpen}
+            setIsDropdownOpen={setIsDropdownOpen}
+          />
         )}
-        <button className="user-button" onClick={toggleDropdown}>
-          <div className="user-avatar">
-            <div className="avatar-dummy"></div>
-          </div>
-          <span className="user-name">{userName}</span>
-        </button>
       </div>
     </header>
   );

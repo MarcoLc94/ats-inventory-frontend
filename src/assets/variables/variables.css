@@ -35,7 +35,7 @@
   --color-surface: hsl(0, 0%, 12%);
   --color-border: hsl(0, 0%, 25%);
 
-  --color-primary: hsl(210, 90%, 60%);
+  --color-primary: hsl(0, 0%, 25%);
   --color-primary-hover: hsl(210, 90%, 50%);
   --color-secondary: hsl(351, 99%, 50%);
   --color-accent: hsl(0, 100%, 70%);
