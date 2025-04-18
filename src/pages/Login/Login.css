@@ -71,6 +71,12 @@
   background-color: var(--primary-color-hover);
 }
 
+/* Estilo cuando el botón está deshabilitado */
+.login-button:disabled {
+  background-color: #cccccc !important; /* Gris */
+  cursor: not-allowed !important;
+}
+
 /* Efecto para los inputs cuando son inválidos */
 .form-group input:invalid:not(:placeholder-shown) {
   border-color: #ff4757;

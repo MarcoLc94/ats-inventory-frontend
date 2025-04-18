@@ -1,6 +1,7 @@
 /* Reset CSS básico */
 @import "./assets/variables/variables.css";
 @import "./assets/variables/layout.css";
+@import "./assets/variables/dashboard.css";
 @import "material-symbols";
 
 * {

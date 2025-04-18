@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import {
   LineChart,
@@ -21,7 +21,7 @@ const productData = [
 ];
 
 const Home = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   // Estado de la aplicación (puedes sustituir esto con tu lógica o API)
   const [inventoryData, setInventoryData] = useState({
@@ -30,26 +30,20 @@ const Home = () => {
     outOfStock: 35,
   });
 
-  // Manejar logout
-  const handleLogout = () => {
-    console.log(setInventoryData);
-    localStorage.removeItem("authToken");
-    navigate("/login");
-  };
-
   // Aquí puedes agregar un useEffect para obtener datos reales de tu API
   useEffect(() => {
     // Simula la carga de datos (puedes sustituirlo por una API real)
     // setInventoryData(...);
+    console.log(setInventoryData);
   }, []);
 
   return (
     <div className="dashboard-container">
-      <h1>Dashboard de Inventarios</h1>
+      <h1>Inicio</h1>
 
       <div className="stats-container">
         <div className="stat-card">
-          <h3>Total de Productos</h3>
+          <h3>Productos Totales</h3>
           <p>{inventoryData.totalProducts}</p>
         </div>
         <div className="stat-card">
@@ -75,8 +69,6 @@ const Home = () => {
           </LineChart>
         </ResponsiveContainer>
       </div>
-
-      <button onClick={handleLogout}>Cerrar sesión</button>
     </div>
   );
 };

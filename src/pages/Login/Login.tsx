@@ -22,6 +22,13 @@ const Login = ({ setIsAuthenticated }: LoginProps) => {
     });
   };
 
+  const isFormValid = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return (
+      emailRegex.test(formData.email) && formData.password.trim().length > 0
+    );
+  };
+
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -82,7 +89,11 @@ const Login = ({ setIsAuthenticated }: LoginProps) => {
             />
           </div>
 
-          <button type="submit" className="login-button">
+          <button
+            type="submit"
+            className="login-button"
+            disabled={!isFormValid()}
+          >
             Iniciar sesión
           </button>
         </form>
